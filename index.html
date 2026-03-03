@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Escalation Readiness Assessment</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -214,7 +214,7 @@ body{background:var(--bg);color:#fff;font-family:var(--fb);font-size:16px;line-h
 .bridge-title .red{color:var(--cr);font-style:normal}
 .bridge-sub{
   font-size:16px;color:var(--gd);max-width:520px;
-  margin:0 auto 32px;line-height:1.75;
+  margin:0 auto 20px;line-height:1.75;
   position:relative;z-index:1;
 }
 /* ★ MICRO-URGENCY PILL on bridge */
@@ -424,12 +424,287 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);padding:
 .ft-micro{font-family:var(--fc);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--go);opacity:.65}
 .ft-disc{width:100%;font-size:11px;color:var(--gd);opacity:.45;line-height:1.6;border-top:1px solid rgba(255,255,255,.04);padding-top:14px;margin-top:6px}
 
-/* REVEAL */
+/* ★ VISCERAL FEAR BLOCK */
+.fear-block{
+  background:#07090F;
+  border-top:1px solid rgba(177,18,38,.2);
+  border-bottom:1px solid rgba(177,18,38,.12);
+  padding:64px 24px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.fear-block::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 100%,rgba(177,18,38,.06) 0%,transparent 65%);
+  pointer-events:none;
+}
+.fear-lines{
+  font-family:var(--fd);
+  font-size:clamp(20px,3.5vw,34px);
+  font-weight:300;
+  font-style:italic;
+  color:rgba(255,255,255,.55);
+  line-height:2;
+  margin-bottom:32px;
+  position:relative;z-index:1;
+}
+.fear-lines strong{color:#fff;font-weight:600;font-style:normal}
+.fear-lines .red{color:var(--cr)}
+.fear-punch{
+  font-family:var(--fc);
+  font-size:clamp(13px,2vw,17px);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+  margin-bottom:12px;
+  position:relative;z-index:1;
+}
+.fear-cost{
+  font-family:var(--fc);
+  font-size:clamp(11px,1.8vw,14px);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--cr);
+  opacity:.7;
+  position:relative;z-index:1;
+}
+
+/* ★ STATUS LINE below bundle */
+.bundle-status{
+  font-family:var(--fd);
+  font-size:13px;
+  font-style:italic;
+  color:rgba(201,162,39,.6);
+  line-height:1.6;
+  text-align:center;
+  padding:12px 0 0;
+  margin-top:4px;
+  border-top:1px solid rgba(201,162,39,.1);
+}
+
+/* ★ BUNDLE DOMINANT — levels 2+
+   Dims the basic card, adds ring to bundle */
+.plans-bundle-focus .pc.basic{
+  opacity:.45;
+  filter:saturate(.4);
+  pointer-events:none;
+}
+.plans-bundle-focus .pc.basic::after{
+  content:'See Bundle Below';
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fc);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gd);background:rgba(10,15,28,.6);
+  pointer-events:none;
+}
+.plans-bundle-focus .pc.bundle{
+  box-shadow:0 0 40px rgba(201,162,39,.18),0 0 80px rgba(201,162,39,.06);
+  border-color:rgba(201,162,39,.7);
+}
+@media(max-width:768px){
+  /* On mobile the cards stack — just dim basic, don't cover */
+  .plans-bundle-focus .pc.basic::after{display:none}
+  .plans-bundle-focus .pc.basic{opacity:.35;pointer-events:auto}
+}
+
+/* Mobile fear block */
+@media(max-width:480px){
+  .fear-block{padding:44px 16px}
+  .fear-lines{line-height:1.85;margin-bottom:24px}
+  .fear-punch{letter-spacing:.15em}
+}
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .rv.vis{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
-@media(max-width:600px){#quiz-app{padding:70px 16px 40px}.opt{padding:14px 16px;gap:12px}.sp{padding:60px 22px}.ticker-label .ts{display:none}}
+/* ══════════════════════════════════════════
+   MOBILE — COMPLETE SYSTEM
+   768px tablet  |  480px phone
+══════════════════════════════════════════ */
+
+/* Touch: disable hover transforms that cause side-scroll */
+@media(hover:none){
+  .opt:hover{transform:none}
+  .opt:active{border-color:rgba(201,162,39,.5);background:rgba(201,162,39,.05)}
+  .btn-cr:hover,.btn-go:hover,.btn-g:hover,.btn-w:hover,.btn-ol:hover{transform:none;box-shadow:none}
+}
+
+/* ── TABLET ── */
+@media(max-width:768px){
+  .ticker-label .ts{display:none}
+  .ti{padding:0 16px}
+  .ti .ts-inline{display:none}
+  #quiz-app{padding:72px 20px 48px}
+  .s{padding:64px 20px}
+  .bridge{padding:56px 20px 48px}
+  .final-bg{padding:72px 20px 64px}
+  .what-grid{grid-template-columns:1fr;gap:32px;margin-top:32px}
+  .tgrid{grid-template-columns:1fr 1fr}
+  .plans-wrap{grid-template-columns:1fr;max-width:520px}
+  .pc{padding:36px 28px}
+  .pc.bundle{border-left:1px solid rgba(201,162,39,.45);border-top:none}
+  .bundle-anchor{flex-direction:column;gap:4px;align-items:flex-start}
+  .spl{grid-template-columns:1fr}
+  .sp{padding:52px 28px}
+  .sp.left{border-right:none;border-bottom:1px solid rgba(255,255,255,.05)}
+  /* Compare table → hide desktop table, show mobile stacked version */
+  .cmp-table{display:none}
+  .cmp-mobile{display:flex!important}
+  .obj-pts{grid-template-columns:1fr;gap:14px}
+  .final-ctas{flex-direction:column;align-items:center;max-width:400px;margin-left:auto;margin-right:auto}
+  .btn-cr,.btn-go{display:block;width:100%;text-align:center}
+  .it-options{flex-direction:column;width:100%;max-width:400px}
+  .it-opt.react{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .it-opt{padding:14px 20px;font-size:12px}
+  footer{padding:24px 20px;flex-direction:column;align-items:flex-start;gap:6px}
+  .ft-micro{display:none}
+}
+
+/* ── PHONE ── */
+@media(max-width:480px){
+  /* Ticker */
+  .ticker-label{padding:0 10px;font-size:9px;letter-spacing:.15em}
+  .ti{padding:0 12px}
+  .ti .badge{font-size:8px;padding:1px 5px;margin-right:6px}
+  .ticker-scroll{padding:5px 0}
+
+  /* Quiz */
+  #quiz-app{padding:72px 14px 40px;justify-content:flex-start;min-height:100svh}
+
+  /* Intro */
+  .intro-badge{font-size:9px;letter-spacing:.18em;padding:5px 12px;margin-bottom:20px;text-align:center;line-height:1.5}
+  .intro-title{font-size:clamp(30px,8.5vw,48px);margin-bottom:16px;line-height:1.08}
+  .intro-sub{font-size:14px;line-height:1.75;margin-bottom:22px}
+  .intro-meta{gap:14px;margin-bottom:26px}
+  .meta-item{font-size:10px;letter-spacing:.1em}
+  .intro-quote{padding:13px 16px;margin-bottom:26px}
+  .intro-quote p{font-size:12px}
+  /* Full-width start button */
+  #screen-intro .btn-cr{display:block!important;width:100%!important;text-align:center!important;padding:18px 16px!important;font-size:13px!important;letter-spacing:.15em!important}
+
+  /* Progress */
+  .prog-wrap{margin-bottom:22px}
+  .prog-lbl{font-size:9px;letter-spacing:.1em;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .score-live{font-size:10px;letter-spacing:.1em}
+
+  /* Question */
+  .q-cat{font-size:9px;letter-spacing:.18em;margin-bottom:8px}
+  .q-num{font-size:11px;margin-bottom:6px}
+  .q-text{font-size:clamp(17px,4.8vw,24px);line-height:1.3;margin-bottom:8px;text-align:left}
+  .q-ctx{font-size:12px;margin-bottom:18px;text-align:left}
+
+  /* Options — large tap targets, left-aligned */
+  .options{gap:7px}
+  .opt{padding:14px 12px;gap:10px;min-height:54px;align-items:flex-start}
+  .opt-letter{width:28px;height:28px;font-size:11px;flex-shrink:0;margin-top:1px}
+  .opt-text{font-size:13px;line-height:1.45}
+
+  /* Feedback */
+  .fb-bar{padding:11px 12px;gap:8px;margin-top:8px}
+  .fb-icon{font-size:13px}
+  .fb-text{font-size:12px;line-height:1.5}
+
+  /* Result */
+  .res-label{font-size:9px;letter-spacing:.2em;margin-bottom:14px}
+  .score-ring-wrap{width:132px;height:132px;margin-bottom:16px}
+  .score-pct{font-size:40px}
+  .res-title{font-size:clamp(20px,5.5vw,30px);margin-bottom:8px}
+  .res-sub{font-size:13px;line-height:1.65;margin-bottom:22px}
+  .bdown{gap:5px;margin-bottom:18px}
+  .bd{padding:9px 10px;font-size:12px;gap:8px}
+  .urg-box{padding:14px 14px;margin-bottom:18px}
+  .ub-head{font-size:9px;letter-spacing:.18em}
+  .ub-text{font-size:12px;line-height:1.6}
+  .scroll-prompt{margin-top:14px;gap:8px}
+  .scroll-prompt span{font-size:10px;letter-spacing:.18em}
+
+  /* Sales sections */
+  .s{padding:46px 16px}
+  .bridge{padding:42px 16px 38px}
+
+  /* Bridge */
+  .bridge-eyebrow{font-size:9px;letter-spacing:.25em;margin-bottom:14px}
+  .bridge-title{font-size:clamp(22px,6.5vw,34px);line-height:1.1;margin-bottom:14px}
+  .bridge-sub{font-size:14px;margin-bottom:14px}
+  .bridge-contrast{font-size:10px;letter-spacing:.08em;padding:11px 0;margin-bottom:16px;line-height:1.9}
+  .bridge-urgency-pill{font-size:9px;letter-spacing:.1em;padding:6px 12px;text-align:center;flex-wrap:wrap;justify-content:center;gap:4px;line-height:1.6}
+
+  /* What */
+  .stit{font-size:clamp(24px,6.5vw,36px)}
+  .stat-row{padding:14px 14px;gap:12px}
+  .stat-num{font-size:28px;width:50px}
+  .stat-txt{font-size:12px}
+
+  /* Triggers */
+  .tgrid{grid-template-columns:1fr}
+  .titem{padding:18px 16px}
+  .tname{font-size:14px}
+  .tdesc{font-size:12px}
+  .wqt{font-size:clamp(16px,4.5vw,24px);padding-left:16px;margin-top:32px}
+
+  /* Plans */
+  .s.plans-bg{padding:44px 16px}
+  .plans-hdr{margin-bottom:26px}
+  .plans-wrap{max-width:100%}
+  .pc{padding:24px 16px 28px}
+  .pbadge{font-size:9px;letter-spacing:.18em;padding:4px 10px}
+  .pprice{font-size:36px}
+  .pplbl{font-size:11px;letter-spacing:.12em}
+  .pname{font-size:13px;margin:10px 0 14px;padding-bottom:13px}
+  /* Hide feature descriptions on mobile — keep name only for scannability */
+  .pitems li br{display:none}
+  .pitems li span:last-child>br{display:none}
+  .pitems li{font-size:13px;padding:8px 0;gap:9px}
+  .ptag{font-size:10px;letter-spacing:.12em;margin-bottom:12px}
+  .bundle-anchor{padding:10px 12px;gap:3px}
+  .anchor-original{font-size:10px;letter-spacing:.08em}
+  .anchor-now{font-size:11px;letter-spacing:.1em}
+  .micro-urgency{padding:9px 12px;gap:8px;margin-bottom:12px}
+  .mu-text{font-size:9px;letter-spacing:.07em}
+  .mu-text strong{font-size:10px;letter-spacing:.09em}
+  .btn-g{font-size:12px;letter-spacing:.12em;padding:15px 14px}
+  .btn-w{font-size:12px;letter-spacing:.12em;padding:14px 14px}
+
+  /* Split */
+  .sp{padding:38px 16px}
+  .sp-lbl{font-size:9px;letter-spacing:.22em;margin-bottom:10px}
+  .sp-h{font-size:clamp(20px,5vw,28px)}
+  .sp-t{font-size:13px;line-height:1.7}
+  /* Button inside split: full-width */
+  .sp.right>div[style]{margin-top:22px!important}
+  .sp .btn-ol{display:block!important;width:100%!important;text-align:center!important;font-size:11px!important;padding:12px 14px!important}
+
+  /* Mobile compare cards (replaces table) */
+  .cmp-mobile-card{padding:16px;margin-bottom:8px}
+  .cmc-title{font-size:11px;letter-spacing:.18em}
+  .cmc-item{font-size:12px;padding:7px 0}
+
+  /* Objection */
+  .obj-title{font-size:clamp(22px,6vw,34px)}
+  .op{padding:16px 14px}
+  .op-h{font-size:13px;letter-spacing:.07em}
+  .op-b{font-size:12px}
+
+  /* Final */
+  .final-bg{padding:50px 16px 46px}
+  .final-title{font-size:clamp(24px,7vw,42px);margin-bottom:26px}
+  .final-copy{margin-bottom:28px}
+  .final-copy p{font-size:15px;line-height:1.85}
+  .final-ctas{gap:10px;max-width:100%}
+  .btn-cr,.btn-go{font-size:12px;letter-spacing:.12em;padding:16px 14px}
+  .final-urgency-note{font-size:9px;letter-spacing:.09em;flex-wrap:wrap;text-align:center;gap:4px;margin-bottom:24px}
+  .final-urgency-note::before,.final-urgency-note::after{width:14px}
+  .identity-trigger{gap:6px;margin-bottom:24px}
+  .it-label{font-size:9px;letter-spacing:.16em}
+  .it-options{max-width:100%}
+  .it-opt{font-size:11px;letter-spacing:.07em;padding:13px 14px}
+
+  /* Footer */
+  footer{padding:18px 16px;gap:8px}
+  .ft-brand{font-size:10px;letter-spacing:.16em}
+  .ft-disc{font-size:10px;line-height:1.55}
+}
 </style>
 </head>
 <body>
@@ -552,6 +827,19 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);padding:
     </div>
   </div>
 
+  <!-- ★ VISCERAL FEAR BLOCK -->
+  <div class="fear-block">
+    <div class="fear-lines">
+      You wake up.<br>
+      <strong>Futures locked limit-down.</strong><br>
+      Oil up <span class="red">11%.</span><br>
+      <strong>Volatility halts.</strong><br>
+      Markets open in <strong>90 minutes.</strong>
+    </div>
+    <p class="fear-punch">You have no written protocol.</p>
+    <p class="fear-cost">That&rsquo;s when mistakes cost five figures.</p>
+  </div>
+
   <!-- WHAT IS IT -->
   <div class="s what-bg">
     <div class="ct">
@@ -606,7 +894,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);padding:
         <h2>Two Plans. <em>One Decision.</em></h2>
         <p>Select the level of preparation that fits your strategy.</p>
       </div>
-      <div class="plans-wrap rv d1">
+      <div class="plans-wrap rv d1" id="plans-wrap">
 
         <!-- BASIC -->
         <div class="pc basic">
@@ -631,7 +919,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);padding:
             <span class="mu-icon">&#9670;</span>
             <span class="mu-text"><strong>Q2 Escalation Cycle</strong>Price may adjust after next quarterly update window.</span>
           </div>
-          <a href="#" class="btn-w">Secure The 72-Hour Plan &mdash; $3.95</a>
+          <a href="#" class="btn-w">Lock In 72-Hour Protocol &mdash; $3.95</a>
         </div>
 
         <!-- BUNDLE -->
@@ -662,7 +950,8 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);padding:
             <span class="mu-icon">&#9670;</span>
             <span class="mu-text"><strong>Q2 Escalation Cycle &mdash; Strategic Bundle</strong>Access price may increase after next update window.</span>
           </div>
-          <a href="#" class="btn-g">Upgrade To Full Strategic Bundle &mdash; $9.95</a>
+          <a href="#" class="btn-g">Lock In Full Strategic System &mdash; $9.95</a>
+          <p class="bundle-status">&ldquo;Built for investors who refuse to be the liquidity exit for emotional money.&rdquo;</p>
         </div>
 
       </div>
@@ -691,6 +980,8 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);padding:
     <div class="ct">
       <span class="slbl rv">Side by Side</span>
       <h2 class="stit rv d1">Compare <em>Your Options</em></h2>
+
+      <!-- Desktop table -->
       <table class="cmp-table rv">
         <thead>
           <tr>
@@ -714,6 +1005,40 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);padding:
           </tr>
         </tbody>
       </table>
+
+      <!-- Mobile stacked cards (hidden on desktop, shown on tablet/phone) -->
+      <div class="cmp-mobile rv" style="display:none;flex-direction:column;gap:12px;margin-top:32px">
+
+        <div class="cmp-mobile-card" style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);padding:22px 20px">
+          <div class="cmc-title" style="font-family:var(--fc);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.07)">Basic Plan &mdash; $3.95</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0">&#10003;</span> 72-Hour Escalation Plan</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0">&#10003;</span> Liquidity Stabilization Framework</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0">&#10003;</span> Sector Reaction Map</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0">&#10003;</span> Tactical Exposure Adjustments</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0">&#10003;</span> Psychological Control Protocol</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gd);opacity:.4"><span style="flex-shrink:0;color:var(--gd)">&mdash;</span> Early Escalation Signals Sheet</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gd);opacity:.4"><span style="flex-shrink:0;color:var(--gd)">&mdash;</span> Capital Rotation Framework</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gd);opacity:.4"><span style="flex-shrink:0;color:var(--gd)">&mdash;</span> Tactical Opportunity Map</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px;color:var(--gd);opacity:.4"><span style="flex-shrink:0;color:var(--gd)">&mdash;</span> Liquidity Control Blueprint</div>
+          <div style="margin-top:16px"><a href="#" class="btn-w" style="font-size:12px;padding:13px 16px">Get Basic Plan &mdash; $3.95</a></div>
+        </div>
+
+        <div class="cmp-mobile-card" style="border:1px solid rgba(201,162,39,.4);background:linear-gradient(135deg,rgba(201,162,39,.07) 0%,rgba(10,15,28,.3) 60%);padding:22px 20px;position:relative">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--go),transparent)"></div>
+          <div class="cmc-title" style="font-family:var(--fc);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--go);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(201,162,39,.15)">&#9733; Strategic Bundle &mdash; $9.95</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0;color:var(--go)">&#10003;</span> 72-Hour Escalation Plan</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0;color:var(--go)">&#10003;</span> Liquidity Stabilization Framework</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0;color:var(--go)">&#10003;</span> Sector Reaction Map</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0;color:var(--go)">&#10003;</span> Tactical Exposure Adjustments</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0;color:var(--go)">&#10003;</span> Psychological Control Protocol</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0;color:var(--go)">&#10003;</span> Early Escalation Signals Sheet</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0;color:var(--go)">&#10003;</span> Capital Rotation Framework</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0;color:var(--go)">&#10003;</span> Tactical Opportunity Map</div>
+          <div class="cmc-item" style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(201,162,39,.12);font-size:13px;color:var(--gr)"><span class="ck" style="flex-shrink:0;color:var(--go)">&#10003;</span> Liquidity Control Blueprint</div>
+          <div style="margin-top:16px"><a href="#" class="btn-g" style="font-size:12px;padding:14px 16px">Lock In Full Strategic System &mdash; $9.95</a></div>
+        </div>
+
+      </div>
     </div>
   </div>
 
@@ -743,8 +1068,8 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);padding:
       </p>
     </div>
     <div class="final-ctas rv d2">
-      <a href="#" class="btn-cr">Get The 72-Hour Plan &mdash; $3.95</a>
-      <a href="#" class="btn-go">Upgrade To Strategic Bundle &mdash; $9.95</a>
+      <a href="#" class="btn-cr">Lock In 72-Hour Protocol &mdash; $3.95</a>
+      <a href="#" class="btn-go">Lock In Full Strategic System &mdash; $9.95</a>
     </div>
     <!-- ★ MICRO-URGENCY final note -->
     <div class="final-urgency-note rv d3">
@@ -945,11 +1270,26 @@ function showResult(){
   sales.style.display='block';
   setTimeout(function(){sales.classList.add('visible');},100);
   initReveal();
+
+  // ★ Bundle dominance for levels 2+ (Strategically Aware / Escalation-Ready)
+  var plansWrap=document.getElementById('plans-wrap');
+  if(plansWrap){
+    if(score>=10){
+      // Levels 2 & 3: dim basic, spotlight bundle
+      plansWrap.classList.add('plans-bundle-focus');
+    } else {
+      plansWrap.classList.remove('plans-bundle-focus');
+    }
+  }
 }
 
 function scrollToSales(){
   var s=document.getElementById('sales');
-  if(s)s.scrollIntoView({behavior:'smooth'});
+  if(!s)return;
+  // iOS Safari smooth scroll fix
+  var top=s.getBoundingClientRect().top+window.pageYOffset;
+  try{window.scrollTo({top:top,behavior:'smooth'});}
+  catch(e){window.scrollTo(0,top);}
 }
 function initReveal(){
   var rvs=document.querySelectorAll('#sales .rv');
