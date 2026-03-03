@@ -218,6 +218,44 @@ body{background:var(--bg);color:#fff;font-family:var(--fb);font-size:16px;line-h
   position:relative;z-index:1;
 }
 /* ★ MICRO-URGENCY PILL on bridge */
+/* ★ Economic contrast */
+.bridge-contrast{
+  font-family:var(--fc);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.52);
+  max-width:560px;margin:0 auto 28px;line-height:1.9;
+  position:relative;z-index:1;
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:13px 0;
+}
+.bridge-contrast .loss{color:var(--cr);font-weight:700}
+.bridge-contrast .cost{color:var(--go);font-weight:700}
+
+/* ★ Bundle anchor */
+.bundle-anchor{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:11px 16px;margin-bottom:14px;
+  background:rgba(201,162,39,.06);
+  border:1px solid rgba(201,162,39,.22);
+  border-left:3px solid var(--go);
+}
+.anchor-original{font-family:var(--fc);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gd)}
+.anchor-original s{text-decoration:line-through;opacity:.55}
+.anchor-now{font-family:var(--fc);font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:var(--go)}
+
+/* ★ Identity trigger */
+.identity-trigger{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  margin-bottom:36px;position:relative;z-index:1;
+}
+.it-label{font-family:var(--fc);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:4px}
+.it-options{display:flex;gap:0;border:1px solid rgba(255,255,255,.08);overflow:hidden}
+.it-opt{font-family:var(--fc);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:12px 24px;cursor:pointer;text-decoration:none;transition:.2s;display:inline-block;text-align:center;line-height:1.4}
+.it-opt.react{color:rgba(255,255,255,.28);background:transparent;border-right:1px solid rgba(255,255,255,.08)}
+.it-opt.react:hover{color:rgba(255,255,255,.5)}
+.it-opt.execute{color:var(--go);background:rgba(201,162,39,.06);font-weight:600}
+.it-opt.execute:hover{background:rgba(201,162,39,.13);color:var(--gl)}
+
 .bridge-urgency-pill{
   display:inline-flex;align-items:center;gap:8px;
   font-family:var(--fc);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
@@ -505,9 +543,12 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);padding:
     <span class="bridge-eyebrow" id="bridge-eyebrow">Based on Your Assessment</span>
     <h2 class="bridge-title" id="bridge-title">If This Happens Overnight&hellip;<br><em>Your Current Positioning Won&rsquo;t Save You.</em></h2>
     <p class="bridge-sub" id="bridge-sub">A structured system built for the exact gaps your answers revealed.</p>
+    <!-- ★ Economic contrast — silent, precise -->
+    <p class="bridge-contrast" id="bridge-contrast">A <span class="loss">6% overnight gap</span> on a $120,000 portfolio equals <span class="loss">$7,200</span>.&nbsp;&nbsp;This system costs <span class="cost">$3.95</span>.</p>
+
     <div class="bridge-urgency-pill">
       <div class="dot"></div>
-      Escalation risk is dynamic &mdash; this material is updated quarterly. Access price reflects current cycle.
+      Q2 Escalation Cycle &mdash; access price may adjust after next update window
     </div>
   </div>
 
@@ -588,7 +629,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);padding:
           <!-- ★ MICRO-URGENCY -->
           <div class="micro-urgency">
             <span class="mu-icon">&#9670;</span>
-            <span class="mu-text"><strong>Current Cycle Pricing</strong>Material updated quarterly. Access price reflects active escalation cycle.</span>
+            <span class="mu-text"><strong>Q2 Escalation Cycle</strong>Price may adjust after next quarterly update window.</span>
           </div>
           <a href="#" class="btn-w">Secure The 72-Hour Plan &mdash; $3.95</a>
         </div>
@@ -611,10 +652,15 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);padding:
             <li><span class="ico">&#10003;</span><span><strong style="color:#fff;font-weight:500">Psychological Control Protocol</strong><br>Complete decision framework. Eliminate reactive execution.</span></li>
           </ul>
           <p class="ptag">Complete system: <span>Defense + Offense Strategy</span></p>
-          <!-- ★ MICRO-URGENCY -->
+          <!-- ★ Anchor value — institutional framing -->
+          <div class="bundle-anchor">
+            <span class="anchor-original">Institutional framework value &nbsp;<s>$197</s></span>
+            <span class="anchor-now">Current cycle: $9.95</span>
+          </div>
+          <!-- ★ Window-based urgency -->
           <div class="micro-urgency">
             <span class="mu-icon">&#9670;</span>
-            <span class="mu-text"><strong>Strategic Bundle &mdash; Current Cycle</strong>Updated each quarter. Price may increase after next review window.</span>
+            <span class="mu-text"><strong>Q2 Escalation Cycle &mdash; Strategic Bundle</strong>Access price may increase after next update window.</span>
           </div>
           <a href="#" class="btn-g">Upgrade To Full Strategic Bundle &mdash; $9.95</a>
         </div>
@@ -702,7 +748,15 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);padding:
     </div>
     <!-- ★ MICRO-URGENCY final note -->
     <div class="final-urgency-note rv d3">
-      Updated quarterly &mdash; current cycle pricing in effect
+      Updated quarterly &mdash; Q2 Escalation Cycle pricing in effect
+    </div>
+    <!-- ★ Identity trigger — psychological self-selection -->
+    <div class="identity-trigger rv d3">
+      <span class="it-label">Choose your approach</span>
+      <div class="it-options">
+        <a href="#" class="it-opt react">I prefer to react emotionally</a>
+        <a href="#" class="it-opt execute">I prefer to execute strategically &nbsp;&rarr;</a>
+      </div>
     </div>
     <p class="rv d3" style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gd);opacity:.5;position:relative;z-index:1">Preparation costs less than regret.</p>
   </div>
@@ -765,7 +819,8 @@ var LEVELS=[
     urgency:"<div class='ub-head'>&#9888; Risk Alert &mdash; Action Required</div><div class='ub-text'>Without a structured protocol, you are relying on <strong>luck and reaction</strong> during the most critical window. Institutional investors are already positioned. <strong>The 72-Hour Escalation Plan was built for exactly this gap.</strong></div>",
     bridge_eyebrow:"Assessment Result — Critical Exposure Detected",
     bridge_title:"If This Happens <span class='red'>Tonight</span>&hellip;<br><em>Your Portfolio Has No Defense.</em>",
-    bridge_sub:"Your answers show zero structured protocol for a crisis event. Every question you missed is a real gap that costs real capital when escalation hits."
+    bridge_sub:"Your answers show zero structured protocol for a crisis event. Every question you missed is a real gap that costs real capital when escalation hits.",
+    bridge_contrast:"A <span class='loss'>6% overnight gap</span> on a $120,000 portfolio equals <span class='loss'>$7,200</span>.\u00a0\u00a0This system costs <span class='cost'>$3.95</span>."
   },
   {
     min:5,max:9,cls:"lv1",color:"#ffc832",label:"&#9672; Partially Ready",
@@ -774,7 +829,8 @@ var LEVELS=[
     urgency:"<div class='ub-head'>&#9889; Critical Gap Detected</div><div class='ub-text'>Instincts get you partway there. But in a fast-moving escalation, <strong>the difference between reaction and execution is a written protocol.</strong> You're 60% prepared. The plan covers the rest.</div>",
     bridge_eyebrow:"Assessment Result — Structural Gap Confirmed",
     bridge_title:"Good Instincts <span class='red'>Won&rsquo;t Execute</span><br><em>Under Real Crisis Pressure.</em>",
-    bridge_sub:"When markets drop 12% in 48 hours, instinct collapses. What executes is a pre-built protocol — written before the pressure begins. You're missing that system."
+    bridge_sub:"When markets drop 12% in 48 hours, instinct collapses. What executes is a pre-built protocol — written before the pressure begins. You're missing that system.",
+    bridge_contrast:"A <span class='loss'>6% overnight gap</span> on a $120,000 portfolio equals <span class='loss'>$7,200</span>.\u00a0\u00a0This system costs <span class='cost'>$3.95</span>."
   },
   {
     min:10,max:14,cls:"lv2",color:"#C9A227",label:"&#9670; Strategically Aware",
@@ -783,7 +839,8 @@ var LEVELS=[
     urgency:"<div class='ub-head'>&#9670; Upgrade Your Edge</div><div class='ub-text'>Awareness without execution architecture leaves alpha on the table. The Strategic Bundle adds <strong>early signal detection, rotation frameworks, and the full tactical map</strong> that turns knowledge into a decisive edge.</div>",
     bridge_eyebrow:"Assessment Result — Knowledge Without Architecture",
     bridge_title:"You Understand the Mechanics.<br><em>Now Build the System Around Them.</em>",
-    bridge_sub:"Knowing what happens during escalation is only half of it. The other half is a documented, executable framework that removes all hesitation when the moment arrives."
+    bridge_sub:"Knowing what happens during escalation is only half of it. The other half is a documented, executable framework that removes all hesitation when the moment arrives.",
+    bridge_contrast:"A <span class='loss'>6% overnight gap</span> on a $150,000 portfolio equals <span class='loss'>$9,000</span>.\u00a0\u00a0The complete bundle costs <span class='cost'>$9.95</span>."
   },
   {
     min:15,max:18,cls:"lv3",color:"#64c878",label:"&#9733; Escalation-Ready",
@@ -792,7 +849,8 @@ var LEVELS=[
     urgency:"<div class='ub-head'>&#9733; Sharpen the Edge</div><div class='ub-text'>You're ahead of 95% of retail investors. The Strategic Bundle gives you <strong>structured documentation, signal sheets, and rotation maps</strong> to execute at the institutional level &mdash; not just understand it.</div>",
     bridge_eyebrow:"Assessment Result — Strategic Thinker Confirmed",
     bridge_title:"You Think Strategically.<br><em>Now Formalize It.</em>",
-    bridge_sub:"Strong mental framework. What separates you from institutional execution is a documented system — written signal sheets, rotation maps, and a protocol that fires without hesitation."
+    bridge_sub:"Strong mental framework. What separates you from institutional execution is a documented system — written signal sheets, rotation maps, and a protocol that fires without hesitation.",
+    bridge_contrast:"Institutional frameworks like this are licensed at <span class='loss'>$197+</span>.\u00a0\u00a0Current cycle access: <span class='cost'>$9.95</span>."
   }
 ];
 
@@ -880,6 +938,7 @@ function showResult(){
   document.getElementById('bridge-eyebrow').textContent=lv.bridge_eyebrow;
   document.getElementById('bridge-title').innerHTML=lv.bridge_title;
   document.getElementById('bridge-sub').textContent=lv.bridge_sub;
+  document.getElementById('bridge-contrast').innerHTML=lv.bridge_contrast;
 
   // Reveal sales section
   var sales=document.getElementById('sales');
